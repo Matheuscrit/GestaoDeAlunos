@@ -2,9 +2,19 @@ from flask import Flask, request, jsonify
 from models import db 
 from models.aluno import Aluno
 from models.turma import Turma
+from flask_cors import CORS
 
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*"}})
+
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+    
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:1234@localhost:3306/escola'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 

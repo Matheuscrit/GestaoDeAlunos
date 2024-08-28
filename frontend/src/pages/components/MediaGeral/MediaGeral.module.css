@@ -1,0 +1,19 @@
+.container {
+  max-width: 600px;
+  margin: 32px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.title {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.value {
+  font-size: 20px;
+  color: #444;
+}
