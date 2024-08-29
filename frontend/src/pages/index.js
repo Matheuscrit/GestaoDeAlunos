@@ -6,6 +6,10 @@ import AdicionarAluno from '@/pages/components/AdicionarAluno';
 import MediaDisciplinas from '@/pages/components/MediasDisciplinas';
 import MediaGeral from '@/pages/components/MediaGeral';
 import AtencaoEspecial from '@/pages/components/AtencaoEspecial';
+import ListarAlunos from '@/pages/components/ListarAlunos';
+import LimparListaAlunos from '@/pages/components/LimparListaAlunos';
+
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,8 +25,10 @@ export default function Home() {
       <main className={`${styles.main} ${inter.className}`}>
         <AdicionarAluno />
         <MediaDisciplinas />
+        <ListarAlunos/>
         <MediaGeral />
         <AtencaoEspecial/>
+        <LimparListaAlunos/>
       </main>
     </>
   );

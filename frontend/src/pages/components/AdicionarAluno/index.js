@@ -24,10 +24,11 @@ function AdicionarAluno() {
       });
 
       const result = await response.json();
-      alert(result.message);
     } catch (error) {
       console.error('Erro ao adicionar aluno:', error);
     }
+
+    window.location.reload();
   };
 
   return (

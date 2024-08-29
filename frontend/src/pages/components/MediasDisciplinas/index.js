@@ -23,7 +23,7 @@ function MediaDisciplinas() {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Médias por Disciplina</h2>
+      <h2 className={styles.title}>Médias da turma em cada Disciplina</h2>
       <ul className={styles.list}>
         {mediaDisciplinas.length > 0 ? (
           mediaDisciplinas.map((media, index) => (
