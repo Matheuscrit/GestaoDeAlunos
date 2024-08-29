@@ -40,6 +40,12 @@ def adicionar_aluno():
     
     return jsonify({"message": f"Aluno {nome} adicionado com sucesso!"}), 201
 
+@app.route('/alunos', methods=['GET'])
+def listar_alunos():
+    alunos = Aluno.query.all()
+    alunos_list = [{"nome": aluno.nome, "notas": aluno.notas, "frequencia": aluno.frequencia} for aluno in alunos]
+    return jsonify(alunos_list), 200
+
 @app.route('/medias/disciplinas', methods=['GET'])
 def media_disciplinas():
     medias = turma.media_turma_por_disciplina()
@@ -61,6 +67,19 @@ def atencao_especial():
         "alunos_abaixo_75_frequencia": abaixo_frequencia,
         "alunos_acima_media_turma": acima_media
     }), 200
+
+@app.route('/limpar_alunos', methods=['DELETE'])
+def limpar_alunos():
+    try:
+        # Deletar todos os registros da tabela Aluno
+        Aluno.query.delete()
+        db.session.commit()
+        return jsonify({"message": "Todos os alunos foram removidos com sucesso!"}), 200
+    except Exception as e:
+        # Em caso de erro, reverter as mudanças e retornar uma mensagem de erro
+        db.session.rollback()
+        return jsonify({"message": f"Ocorreu um erro ao remover os alunos: {str(e)}"}), 500
+
 
 if __name__ == '__main__':
     app.run(debug=True)
